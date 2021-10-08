@@ -22,7 +22,7 @@ d3.json(countyURL).then(
         if(error){
             console.log(log)
         }else {
-            countyData = data
+            countyData = topojson.feature(data, data.objects.counties)
             console.log("County Data")
             console.log(countyData)
         }
@@ -32,7 +32,9 @@ d3.json(countyURL).then(
                     console.log(log)
                 }else {
                     educationData = data
+                    console.log("Education Data")
                     console.log(educationData)
+                    drawMap()
                 }
             }
                     )
