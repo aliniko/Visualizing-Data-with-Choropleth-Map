@@ -43,12 +43,13 @@ let drawMap = () => {
     .attr("data-fips", (countyDataItem) => {
       return countyDataItem["id"];
     })
-    .attr('data-fips', (countyDataItem) => {
+    .attr('data-education', (countyDataItem) => {
         let id = countyDataItem["id"];
         let county = educationData.find((item) => {
           return item["fips"] === id;
         });
         let percentage = county["bachelorsOrHigher"];
+        return percentage;
     });
 };
 
