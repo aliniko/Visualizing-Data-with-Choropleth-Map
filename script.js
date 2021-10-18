@@ -62,9 +62,9 @@ let drawMap = () => {
         })
 
         tooltip.text(county['fips'] + '-' + county['area_name'] + ', ' +
-          county['state'] + ':' + county['bachelorOrHigher'] + '%' )
+          county['state'] + ':' + county['bachelorsOrHigher'] + '%' )
 
-          tooltip.attr('data-education', county['bachelorOrHigher'])
+          tooltip.attr('data-education', county['bachelorsOrHigher'])
     })
     .on('mouseout', (countyDataItem) => {
       tooltip.transition()
