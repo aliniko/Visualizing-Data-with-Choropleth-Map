@@ -14,6 +14,7 @@ let countyData;
 let educationData;
 
 let canvas = d3.select("#canvas");
+let tooltip = d3.select('#tooltip')
 
 let drawMap = () => {
   canvas
@@ -50,7 +51,25 @@ let drawMap = () => {
         });
         let percentage = county["bachelorsOrHigher"];
         return percentage;
-    });
+    })
+    .on('mouseover', (countyDataItem) => {
+      tooltip.transition()
+            .style('visibility', 'visible')
+
+          let id = countyDataItem["id"];
+          let county = educationData.find((item) => {
+          return item["fips"] === id;
+        })
+
+        tooltip.text(county['fips'] + '-' + county['area_name'] + ', ' +
+          county['state'] + ':' + county['bachelorOrHigher'] + '%' )
+
+          tooltip.attr('data-education', county['bachelorOrHigher'])
+    })
+    .on('mouseout', (countyDataItem) => {
+      tooltip.transition()
+            .style('visibility', 'hidden')
+    })
 };
 
 d3.json(countyURL).then((data, error) => {
