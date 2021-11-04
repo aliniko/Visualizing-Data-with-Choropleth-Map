@@ -1,2 +1,2 @@
-# Visualizing-Data-with-Choropleth-Map
-live site
+# Visualizing Data with Choropleth Map
+live site's photo
